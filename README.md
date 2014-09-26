@@ -44,6 +44,6 @@ The `.vv` file used for your session will typically be deleted during its use. U
 ### Caveats
 
 * The script only works for VNC consoles. I don't use SPICE.
-* The script is known to work under OS X 10.9.4 and 10.9.5. No other operating systems of OS X versions have been tested.
+* The script is known to work under OS X 10.9.4 and 10.9.5. No other operating systems or versions of OS X have been tested.
 * I'm new to Python, so I've probably violated a gazillion best practices. You can patch or keep silent; whining is not allowed. :-)
 
