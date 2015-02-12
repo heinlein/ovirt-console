@@ -41,6 +41,10 @@ If your browser puts downloads elsewhere, or if the file gets renamed (*e.g.*, `
 
 The `.vv` file used for your session will typically be deleted during its use. Use the `-k` option to keep it around.
 
+### Troubleshooting
+
+Since updating to oVirt Engine 3.5, I've noticed several occasions when the `console.vv` file arrived in mangled shape, with fields miscast (*e.g.*, the password in the host field). Each time, I simply requested a new console session; the resulting `console.vv` parsed correctly.
+
 ### Caveats
 
 * The script only works for VNC consoles. I don't use SPICE.
