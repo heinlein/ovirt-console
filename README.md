@@ -3,11 +3,11 @@ ovirt-console
 
 I use [oVirt](http://www.ovirt.org/Home) at work to manage an internal virtual-machine cluster. Until recently, we were running oVirt 3.2.2, which is as of September 2014 two (almost three) releases out of date.
 
-### VNC woes in oVirt 3.3 (and 3.4)
+### VNC woes in oVirt 3.3 (and 3.4, 3.5)
 
-A little while ago, I took the first step in getting us to the current version of oVirt, upgrading from 3.2.2 to 3.3.5 (and, later, to 3.4.4). The upgrade went well with one glaring exception: VNC consoles became way harder to launch. In 3.2.2, someone requesting a VNC console was shown a dialog box with a hostname and port number to which to connect, along with a password. It was a hassle to manually launch a VNC session, point it in the right direction, and enter the password—but it at least worked.
+A little while ago, I took the first step in getting us to the current version of oVirt, upgrading from 3.2.2 to 3.3.5 (and, later, to 3.4.4 then 3.5.0). The upgrade went well with one glaring exception: VNC consoles became way harder to launch. In 3.2.2, someone requesting a VNC console was shown a dialog box with a hostname and port number to which to connect, along with a password. It was a hassle to manually launch a VNC session, point it in the right direction, and enter the password—but it at least worked.
 
-With 3.3.5 and 3.4.4, there's good news and bad news. On the upside, the oVirt developers are aiming to automate the launching and authentication of the VNC session. When you request a VNC console in those versions of oVirt, your browser will download a file named `console.vv`. It's an INI-style file:
+With 3.3.x through 3.5.x, there's good news and bad news. On the upside, the oVirt developers are aiming to automate the launching and authentication of the VNC session. When you request a VNC console in those versions of oVirt, your browser will download a file named `console.vv`. It's an INI-style file:
 
 ``` ini
 [virt-viewer]
@@ -44,6 +44,6 @@ The `.vv` file used for your session will typically be deleted during its use. U
 ### Caveats
 
 * The script only works for VNC consoles. I don't use SPICE.
-* The script is known to work under OS X 10.9.4, 10.9.5, 10.10, and 10.10.1. No other operating systems or versions of OS X have been tested.
+* The script is known to work under OS X 10.9.4, 10.9.5, 10.10, 10.10.1 and 10.10.2. No other operating systems or versions of OS X have been tested.
 * I'm new to Python, so I've probably violated a gazillion best practices. You can patch or keep silent; whining is not allowed. :-)
 
