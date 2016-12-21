@@ -47,7 +47,7 @@ Since updating to oVirt Engine 3.5, I've noticed several occasions when the `con
 
 ### Caveats
 
-* The script only works for VNC consoles. I don't use SPICE.
+* The script originally worked only for VNC consoles. I don't use SPICE, but Mark Petersen has submitted a patch that passes a valid SPICE console request to the RemoteViewer application. I haven't tested this capability.
 * The script is known to work under OS X 10.9.4, 10.9.5, 10.10, 10.10.1 and 10.10.2. No other operating systems or versions of OS X have been tested.
 * I'm new to Python, so I've probably violated a gazillion best practices. You can patch or keep silent; whining is not allowed. :-)
 
