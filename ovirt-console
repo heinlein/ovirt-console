@@ -4,7 +4,8 @@
 # ini-style file with the host/port/password information necessary
 # for connecting to a VM via VNC. On a Mac, that file (typically
 # named console.vv) is useless as-is. This script parses console.vv
-# and passes a vnc:// URL to /usr/bin/open.
+# and passes a vnc:// URL to /usr/bin/open or hands it off to 
+# RemoveViewer for spice
 #
 # A reasonable console.vv file will look something like this:
 #
@@ -33,6 +34,8 @@ import ConfigParser, argparse, subprocess, sys, os.path
 
 # open(1) knows how to deal with various file and string types
 opener = "/usr/bin/open"
+# spice Remote Desktop application deals with console.vv files
+opener_spice = "/Applications/RemoteViewer.app/Contents/MacOS/RemoteViewer"
 # define the correct section name in console.vv
 header = "virt-viewer"
 # the default location of the ini file; this can be overridden
@@ -73,14 +76,16 @@ except ConfigParser.NoSectionError:
   sys.stderr.write( "Cannot find necessary [" + header + "] section.\n" )
   sys.exit()
 
-# make sure that, within the virt-viewer section, there's a type=vnc
-# option
+# make sure that, within the virt-viewer section, there's a type=spice or
+# type=vnc option
 try:
   c.has_option( header, 'type' )
 except ConfigParser.NoOptionError:
   sys.stderr.write( "Cannot find necessary 'type' option.\n" )
   sys.exit()
-
+if 'spice' == c.get( header, 'type' ):
+  subprocess.call ( [opener_spice, args.vvfile ] )
+  sys.exit()
 if not 'vnc' == c.get( header, 'type' ):
   sys.stderr.write( "'type' option option is not 'vnc'.\n" )
   sys.exit()
